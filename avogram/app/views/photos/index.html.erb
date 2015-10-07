@@ -1,9 +1,12 @@
-<% if Photo.all.any? %>
-  <% @photos.all.each do |photo| %>
-    <h2><%= photo.name %></h2>
+
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+    <%= link_to photo.name, photo_path(photo) %>
+
+    <%= link_to "Edit #{photo.name}", edit_photo_path(photo) %>
   <% end %>
 <% else %>
   <h1>No photos yet!</h1>
 <% end %>
 
-<a href="#">Add a photo</a>
+ <h3><%= link_to 'Add photo', new_photo_path %></h3>
