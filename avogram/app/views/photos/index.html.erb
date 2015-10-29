@@ -1,13 +1,16 @@
+<% if user_signed_in? %>
 
-<% if @photos.any? %>
-  <% @photos.each do |photo| %>
-    <p><%= link_to photo.name, photo_path(photo) %></p>
+  <h3><%= link_to 'Add photo', new_photo_path %></h3>
 
-    <p><%= link_to "Edit #{photo.name}", edit_photo_path(photo) %></p>
-    <p><%= link_to "Delete #{photo.name}", photo_path(photo), method: :delete %></p>
+  <% if @photos.any? %>
+    <% @photos.each do |photo| %>
+      <p><%= link_to photo.name, photo_path(photo) %></p>
+
+      <p><%= link_to "Edit #{photo.name}", edit_photo_path(photo) %></p>
+      <p><%= link_to "Delete #{photo.name}", photo_path(photo), method: :delete %></p>
+    <% end %>
+  <% else %>
+    <h1>No photos yet!</h1>
   <% end %>
-<% else %>
-  <h1>No photos yet!</h1>
 <% end %>
 
- <h3><%= link_to 'Add photo', new_photo_path %></h3>
